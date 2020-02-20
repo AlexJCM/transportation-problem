@@ -29,13 +29,13 @@ const Solve = props => {
           Necesidades totales: <b>{needsVolume}</b>
         </p>
         <p>
-          &sum; O<sub>i</sub>{" "}
+          &sum; Oferta{" "}
           {storageVolume > needsVolume
             ? ">"
             : storageVolume < needsVolume
             ? "<"
             : "="}{" "}
-          &sum; D<sub>i</sub> - El modelo esta{" "}
+          &sum; Demanda = El modelo esta{" "}
           {storageVolume !== needsVolume ? "desequilibrado" : "equilibrado"}
         </p>
       </div>
