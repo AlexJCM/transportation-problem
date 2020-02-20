@@ -29,7 +29,7 @@ const state = {
 };
 */
 
-/*Ejercicio 7.2.2
+/*Ejercicio 7.2.2*/
 const state = {
   matrix: {
     rowsCount: 2,
@@ -42,7 +42,7 @@ const state = {
     storage: [30,50]
   }
 };
-*/
+/**/
 
 /*Lit. 1-Ejercicio B Sol. Optima
 const state = {
@@ -61,7 +61,7 @@ const state = {
 */
 
 /*Lit. 1-Ejercicio C Sol. optima
-*/
+
 const state = {
   matrix: {
     rowsCount: 3,
@@ -75,8 +75,10 @@ const state = {
     storage: [8,10,12]
   }
 };
-/*
 */
+
+
+
 
 /*Lit. 1-Ejercicio A Sol. Factible Con MODI=205
 const state = {
