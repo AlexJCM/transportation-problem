@@ -2,21 +2,6 @@
 /*
 const state = {
   matrix: {
-    rowsCount: 2,
-    columnsCount: 3,
-    data: [
-      [10, 30, 10],
-      [10, 15, 7]
-    ],
-    needs: [20, 22, 14],
-    storage: [26, 30]
-  }
-};
-*/
-
-
-const state = {
-  matrix: {
     rowsCount: 3,
     columnsCount: 4,
     data: [
@@ -28,4 +13,19 @@ const state = {
     storage: [450, 550, 300]
   }
 };
+*/
+
+const state = {
+  matrix: {
+    rowsCount: 2,
+    columnsCount: 3,
+    data: [
+      [10, 30, 10],
+      [20, 10, 10]
+    ],
+    needs: [20, 22, 14],
+    storage: [26, 30]
+  }
+};
+
 export default state;

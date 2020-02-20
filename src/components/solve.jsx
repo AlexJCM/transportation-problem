@@ -42,8 +42,6 @@ const Solve = props => {
           {storageVolume !== needsVolume ? "DESEQUILIBRADO " : "EQUILIBRADO"}
         </p>
       </center>
-        
-        
 
       <center><b><p>Modelo Equilibrado</p></b></center> 
       {closedMatrix && (

@@ -53,7 +53,7 @@ const Main = props => {
       needs.indexOf("") !== -1 ||
       storage.indexOf("") !== -1
     ) {
-      alert("Rellene todos los campos!");
+      alert("Rellene Todos los Campos");
       return;
     }
   };
@@ -63,12 +63,12 @@ const Main = props => {
       <Select
         handleChange={changeRowsCount}
         val={rowsCount}
-        text="Número de filas (proveedores):"
+        text="Número de Origenes:"
       />
       <Select
         handleChange={changeColumnsCount}
         val={columnsCount}
-        text="Número de columnas (destinos):"
+        text="Número de Destinos:"
       />
       <InputTable
         matrix={matrix}
@@ -82,10 +82,10 @@ const Main = props => {
       />
       <div className="btns-block">
         <button onClick={clearTable} id="resetTable">
-          Limpiar tabla
+          Limpiar Tabla
         </button>
         <button onClick={checkData} id="resolveTable">
-          Calcular el plan
+          Calcular
         </button>
       </div>
     </div>
