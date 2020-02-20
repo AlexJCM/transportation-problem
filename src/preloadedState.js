@@ -1,5 +1,20 @@
-//Para asignr al stado una matriz para quye
-// cuando cargue la página sea utilizado
+//Para asignar al estado una matriz para que cuando cargue la página sea utilizado
+/*
+const state = {
+  matrix: {
+    rowsCount: 2,
+    columnsCount: 3,
+    data: [
+      [10, 30, 10],
+      [10, 15, 7]
+    ],
+    needs: [20, 22, 14],
+    storage: [26, 30]
+  }
+};
+*/
+
+
 const state = {
   matrix: {
     rowsCount: 3,
@@ -13,5 +28,4 @@ const state = {
     storage: [450, 550, 300]
   }
 };
-
 export default state;

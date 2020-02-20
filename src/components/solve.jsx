@@ -16,31 +16,36 @@ const Solve = props => {
   return (
     <section className="solve">
      <center><h2>SOLUCIÓN</h2></center>
+     
       <p>
         Primero determinamos si necesitamos crear en un origen o un destino ficticio en este caso :{" "}
         {storageVolume !== needsVolume ? "(SE NECESITA)" : "(NO SE NECESITA)"}
       </p>
-      <div className="volume">
+      <center>
         <p>
-         &sum; Oferta <sub>Total</sub>: <b>{storageVolume}</b>
+         &sum; Oferta <sub>Total</sub>=<b>{storageVolume}</b>
+         </p>
+         <p>
+         &sum; Demanda <sub>Total</sub>=<b>{needsVolume}</b>
         </p>
-        <p>
-         &sum; Demanda <sub>Total</sub>: <b>{needsVolume}</b>
-        </p>
-        <p>
+      </center>
+      
+      <center>
+      <p>
         &sum; Oferta <sub>T</sub>{" "}
           {storageVolume > needsVolume
             ? ">"
             : storageVolume < needsVolume
             ? "<"
             : "="}{" "}
-          &sum; Demanda <sub>T</sub> = El modelo esta{" "}
-          {storageVolume !== needsVolume ? "DESEQUILIBRADO" : "EQUILIBRADO"}
+          &sum; Demanda <sub>T</sub> - El modelo esta {" "}
+          {storageVolume !== needsVolume ? "DESEQUILIBRADO " : "EQUILIBRADO"}
         </p>
-      </div>
-      <p>
-        Como resultado, obtenemos un modelo equilibrado del problema de transporte:{" "}
-      </p>
+      </center>
+        
+        
+
+      <center><b><p>Modelo Equilibrado</p></b></center> 
       {closedMatrix && (
         <OutTable
           matrix={closedMatrix}
@@ -61,7 +66,7 @@ const Solve = props => {
         />
       ))}
       <h3>
-        El costo de transporte es igual a:{" "}
+        El costo de transporte es igual a :{" "}
         {solve[solve.length - 1].matr
           ? findPrice(closedMatrix, solve[solve.length - 1].matr)
           : "Ninguna solución"}

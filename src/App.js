@@ -12,7 +12,7 @@ class App extends Component {
     solveMatrix(matrix, storage, needs, updateState);
     return (
       <div className="App">
-        <h1>Método de aproximación de Vogel</h1>
+        <h1>Método de Aproximación de Vogel</h1>
         <Main />
         <Solve />
       </div>
