@@ -1,16 +1,16 @@
 import c from "../constants";
 
-const solve = (state = {}, { type, storageVolume, needsVolume, newState }) => {
+const solve = (state = {}, { type, ofertaVolume, demandaVolume, newState }) => {
   switch (type) {
     case c.GET_STORAGE_VOLUME:
       return {
         ...state,
-        storageVolume
+        ofertaVolume
       };
     case c.GET_NEEDS_VOLUME:
       return {
         ...state,
-        needsVolume
+        demandaVolume
       };
     case c.UPDATE_STATE:
       return {

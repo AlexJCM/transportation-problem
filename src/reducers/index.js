@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
-import matrix from './matrix';
-import solve from './solve';
+import { combineReducers } from "redux";
+import matriz from "./matriz";
+import solve from "./solve";
 
-const rootReducer = combineReducers({ matrix, solve });
+const rootReducer = combineReducers({ matriz, solve });
 
 export default rootReducer;

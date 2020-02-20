@@ -11,8 +11,8 @@ const InputTD = ({ i, j, color, val, handleChange }) => {
       <input
         type="text"
         value={val}
-        data-i={i}
-        data-j={j}
+        datos-i={i}
+        datos-j={j}
         onChange={e => {
           validation(e);
           handleChange(i, j, Number(e.target.value));

@@ -1,12 +1,12 @@
-td[data-price] {
+td[datos-price] {
   position: relative;
   font-size: 80%;
   text-align: left;
   padding-left: 3px;
 }
 
-td[data-price]::after {
-  content: attr(data-price);
+td[datos-price]::after {
+  content: attr(datos-price);
   text-align: center;
   font-size: 70%;
   position: absolute;

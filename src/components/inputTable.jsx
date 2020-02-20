@@ -4,18 +4,18 @@ import "../styles/inputTable.css";
 
 const InputTable = props => {
   const {
-    rows,
-    columns,
-    matrix,
-    needs,
-    storage,
+    filas, //rows
+    columnas, //columns
+    matriz,
+    demanda,
+    oferta,
     updMatr,
-    changeNeeds,
-    changeStorage
+    changeDemanda,
+    changeOferta
   } = props;
 
-  const cols = [...Array(columns)];
-  const rws = [...Array(rows)];
+  const cols = [...Array(columnas)];
+  const fils = [...Array(filas)]; //rws
 
   return (
     <table id="inputTable" border="1px">
@@ -24,7 +24,7 @@ const InputTable = props => {
           <td className="text" rowSpan="2">
             Origenes
           </td>
-          <td className="text" colSpan={columns}>
+          <td className="text" colSpan={columnas}>
             Destinos
           </td>
           <td className="text" rowSpan="2">
@@ -39,7 +39,7 @@ const InputTable = props => {
             </td>
           ))}
         </tr>
-        {rws.map((row, index) => (
+        {fils.map((row, index) => (
           <tr>
             <td key={index}>
               <i>O</i>
@@ -48,15 +48,15 @@ const InputTable = props => {
             {cols.map((item, j) => (
               <InputTD
                 handleChange={updMatr}
-                val={matrix[index][j]}
+                val={matriz[index][j]}
                 i={index}
                 j={j}
                 key={`${index}:${j}`}
               />
             ))}
             <InputTD
-              handleChange={changeStorage}
-              val={storage[index]}
+              handleChange={changeOferta}
+              val={oferta[index]}
               i={index}
               j={100}
               color="green"
@@ -68,8 +68,8 @@ const InputTable = props => {
           <td className="text">Demanda</td>
           {cols.map((item, index) => (
             <InputTD
-              handleChange={changeNeeds}
-              val={needs[index]}
+              handleChange={changeDemanda}
+              val={demanda[index]}
               i={100}
               j={index}
               color="green"

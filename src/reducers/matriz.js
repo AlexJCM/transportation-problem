@@ -1,15 +1,15 @@
 import c from "../constants.js";
 
-function getEmptyMatrix(i, j) {
-  let matrix = [];
+function getEmptyMatriz(i, j) {
+  let matriz = [];
   for (let k = 0; k < i; k++) {
     let cols = new Array(j);
     for (let c = 0; c < j; c++) {
       cols[c] = "";
     }
-    matrix.push(cols);
+    matriz.push(cols);
   }
-  return matrix;
+  return matriz;
 }
 
 function getEmptyArray(i) {
@@ -20,45 +20,45 @@ function getEmptyArray(i) {
   return cols;
 }
 
-const matrix = (
+const matriz = (
   state = {},
-  { type, rowsCount, columnsCount, data, needs, storage }
+  { type, cantidad_origenes, cantidad_destinos, datos, demanda, oferta }
 ) => {
   switch (type) {
     case c.CHANGE_ROWS_COUNT:
       return {
         ...state,
-        rowsCount,
-        data: getEmptyMatrix(rowsCount, state.columnsCount),
-        needs: getEmptyArray(state.columnsCount),
-        storage: getEmptyArray(rowsCount)
+        cantidad_origenes,
+        datos: getEmptyMatriz(cantidad_origenes, state.cantidad_destinos),
+        demanda: getEmptyArray(state.cantidad_destinos),
+        oferta: getEmptyArray(cantidad_origenes)
       };
 
     case c.CHANGE_COLUMNS_COUNT:
       return {
         ...state,
-        columnsCount,
-        data: getEmptyMatrix(state.rowsCount, columnsCount),
-        needs: getEmptyArray(columnsCount),
-        storage: getEmptyArray(state.rowsCount)
+        cantidad_destinos,
+        datos: getEmptyMatriz(state.cantidad_origenes, cantidad_destinos),
+        demanda: getEmptyArray(cantidad_destinos),
+        oferta: getEmptyArray(state.cantidad_origenes)
       };
 
     case c.UPDATE_MATRIX:
       return {
         ...state,
-        data
+        datos
       };
 
     case c.CHANGE_NEEDS:
       return {
         ...state,
-        needs
+        demanda
       };
 
     case c.CHANGE_STORAGE:
       return {
         ...state,
-        storage
+        oferta
       };
 
     default:
@@ -66,4 +66,4 @@ const matrix = (
   }
 };
 
-export default matrix;
+export default matriz;

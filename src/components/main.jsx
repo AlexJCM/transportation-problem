@@ -5,53 +5,59 @@ import { connect } from "react-redux";
 import {
   changeRowsCount,
   changeColumnsCount,
-  updateMatrix,
-  changeNeeds,
-  changeStorage
+  updateMatriz,
+  changeDemanda,
+  changeOferta
 } from "../actions/actionCreator";
 import "../styles/main.css";
 
 const Main = props => {
-  const { rowsCount, columnsCount, matrix, needs, storage } = props;
+  const {
+    cantidad_origenes,
+    cantidad_destinos,
+    matriz,
+    demanda,
+    oferta
+  } = props;
 
   const changeColumnsCount = colsCount => {
     const { changeColumnsCount } = props;
     changeColumnsCount(colsCount);
   };
 
-  const changeRowsCount = rowsCount => {
+  const changeRowsCount = cantidad_origenes => {
     const { changeRowsCount } = props;
-    changeRowsCount(rowsCount);
+    changeRowsCount(cantidad_origenes);
   };
 
-  const changeNeeds = (i, j, val) => {
-    const { changeNeeds } = props;
-    needs[j] = val;
-    changeNeeds([...needs]);
+  const changeDemanda = (i, j, val) => {
+    const { changeDemanda } = props;
+    demanda[j] = val;
+    changeDemanda([...demanda]);
   };
 
-  const changeStorage = (i, j, val) => {
-    const { changeStorage } = props;
-    storage[i] = val;
-    changeStorage([...storage]);
+  const changeOferta = (i, j, val) => {
+    const { changeOferta } = props;
+    oferta[i] = val;
+    changeOferta([...oferta]);
   };
 
   const updMatr = (i, j, val) => {
-    const { updateMatrix } = props;
-    let m = Array.from(matrix);
+    const { updateMatriz } = props;
+    let m = Array.from(matriz);
     m[i][j] = val;
-    updateMatrix(m);
+    updateMatriz(m);
   };
 
   const clearTable = () => {
-    changeRowsCount(rowsCount);
+    changeRowsCount(cantidad_origenes);
   };
 
   const checkData = () => {
     if (
-      matrix.indexOf("") !== -1 ||
-      needs.indexOf("") !== -1 ||
-      storage.indexOf("") !== -1
+      matriz.indexOf("") !== -1 ||
+      demanda.indexOf("") !== -1 ||
+      oferta.indexOf("") !== -1
     ) {
       alert("Rellene Todos los Campos");
       return;
@@ -62,23 +68,23 @@ const Main = props => {
     <div>
       <Select
         handleChange={changeRowsCount}
-        val={rowsCount}
+        val={cantidad_origenes}
         text="Número de Origenes:"
       />
       <Select
         handleChange={changeColumnsCount}
-        val={columnsCount}
+        val={cantidad_destinos}
         text="Número de Destinos:"
       />
       <InputTable
-        matrix={matrix}
-        needs={needs}
-        storage={storage}
+        matriz={matriz}
+        demanda={demanda}
+        oferta={oferta}
         updMatr={updMatr}
-        changeNeeds={changeNeeds}
-        changeStorage={changeStorage}
-        rows={rowsCount}
-        columns={columnsCount}
+        changeDemanda={changeDemanda}
+        changeOferta={changeOferta}
+        filas={cantidad_origenes}
+        columnas={cantidad_destinos}
       />
       <div className="btns-block">
         <button onClick={clearTable} id="resetTable">
@@ -94,17 +100,17 @@ const Main = props => {
 
 export default connect(
   state => ({
-    rowsCount: state.matrix.rowsCount,
-    columnsCount: state.matrix.columnsCount,
-    matrix: state.matrix.data,
-    needs: state.matrix.needs,
-    storage: state.matrix.storage
+    cantidad_origenes: state.matriz.cantidad_origenes,
+    cantidad_destinos: state.matriz.cantidad_destinos,
+    matriz: state.matriz.datos,
+    demanda: state.matriz.demanda,
+    oferta: state.matriz.oferta
   }),
   {
     changeRowsCount,
     changeColumnsCount,
-    updateMatrix,
-    changeNeeds,
-    changeStorage
+    updateMatriz,
+    changeDemanda,
+    changeOferta
   }
 )(Main);

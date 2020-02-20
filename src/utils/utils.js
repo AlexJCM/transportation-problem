@@ -1,53 +1,57 @@
 //Este metodo es el principal y es llamado desde App.js
 //y utiliza el resto de metodos de este archivo
-function solveMatrix(matrixTariffs, storage, needs, callback) {
+function solveMatriz(matrizTariffs, oferta, demanda, callback) {
   let state = {};
 
   state.solve = [];
 
-  state.storageVolume = sumArray(storage);
-  state.needsVolume = sumArray(needs);
+  state.ofertaVolume = sumarArray(oferta);
+  state.demandaVolume = sumarArray(demanda);
 
-  state.closedMatrix = getClosedMatrix(
-    matrixTariffs,
-    state.storageVolume,
-    state.needsVolume
+  state.closedMatriz = getClosedMatriz(
+    matrizTariffs,
+    state.ofertaVolume,
+    state.demandaVolume
   );
 
-  let starterNeeds = Array.from(needs);
-  if (state.storageVolume > state.needsVolume) {
-    starterNeeds[starterNeeds.length] = state.storageVolume - state.needsVolume;
+  let starter_demanda = Array.from(demanda);
+  if (state.ofertaVolume > state.demandaVolume) {
+    starter_demanda[starter_demanda.length] =
+      state.ofertaVolume - state.demandaVolume;
   }
-  state.starterNeeds = starterNeeds;
+  state.starter_demanda = starter_demanda;
 
-  let starterStorage = Array.from(storage);
-  if (state.storageVolume < state.needsVolume) {
-    starterStorage[starterStorage.length] =
-      state.needsVolume - state.storageVolume;
+  let starter_oferta = Array.from(oferta);
+  if (state.ofertaVolume < state.demandaVolume) {
+    starter_oferta[starter_oferta.length] =
+      state.demandaVolume - state.ofertaVolume;
   }
-  state.starterStorage = starterStorage;
+  state.starter_oferta = starter_oferta;
 
-  const diffs = findMatrixDiffs(state.closedMatrix);
-  const maxEl = findMaxDiff(diffs.rowsDiffs, diffs.colsDiffs);
-  const matr = state.closedMatrix.map(arr => arr.map(el => ""));
+  const diferencias = encontrarMatrizDiferencias(state.closedMatriz);
+  const maxEl = encontrarMaxDiferencia(
+    diferencias.rowsDiferencias,
+    diferencias.colsDiferencias
+  );
+  const matr = state.closedMatriz.map(arr => arr.map(el => ""));
 
   state.solve[0] = {
     matr,
     maxEl,
-    ...diffs,
-    curStorVolume: state.storageVolume,
-    curNeedVolume: state.needsVolume,
-    needs: starterNeeds,
-    storage: starterStorage
+    ...diferencias,
+    curOfertaVolume: state.ofertaVolume,
+    curDemandaVolume: state.demandaVolume,
+    demanda: starter_demanda,
+    oferta: starter_oferta
   };
 
   while (
-    state.solve[state.solve.length - 1].curStorVolume > 0 ||
-    state.solve[state.solve.length - 1].curNeedVolume > 0
+    state.solve[state.solve.length - 1].curOfertaVolume > 0 ||
+    state.solve[state.solve.length - 1].curDemandaVolume > 0
   ) {
     state.solve = [
       ...state.solve,
-      fillBasicPlan(state.closedMatrix, state.solve[state.solve.length - 1])
+      fillBasicPlan(state.closedMatriz, state.solve[state.solve.length - 1])
     ];
   }
 
@@ -56,13 +60,13 @@ function solveMatrix(matrixTariffs, storage, needs, callback) {
 
 function fillBasicPlan(
   tariffs,
-  { matr, maxEl, colsDiffs, rowsDiffs, needs, storage }
+  { matr, maxEl, colsDiferencias, rowsDiferencias, demanda, oferta }
 ) {
   let curMatr = matr.map(el => Array.from(el));
-  let curColsDiffs = [...colsDiffs];
-  let curRowsDiffs = [...rowsDiffs];
-  let curNeeds = [...needs];
-  let curStorage = [...storage];
+  let curColsDiferencias = [...colsDiferencias];
+  let curRowsDiferencias = [...rowsDiferencias];
+  let curDemanda = [...demanda];
+  let curOferta = [...oferta];
 
   if (maxEl.arrName === "colsArr") {
     let arr = getColumnArray(tariffs, maxEl.elIndex); //Obtener una matriz de una columna con la máxima diferencia.
@@ -77,18 +81,18 @@ function fillBasicPlan(
 
     let k = 0;
 
-    while (curStorage[arr[k].index] <= 0) {
+    while (curOferta[arr[k].index] <= 0) {
       k++;
     }
 
     curMatr[arr[k].index][maxEl.elIndex] = Math.min(
-      curNeeds[maxEl.elIndex],
-      curStorage[arr[k].index]
+      curDemanda[maxEl.elIndex],
+      curOferta[arr[k].index]
     );
-    curNeeds[maxEl.elIndex] =
-      curNeeds[maxEl.elIndex] - curMatr[arr[k].index][maxEl.elIndex];
-    curStorage[arr[k].index] =
-      curStorage[arr[k].index] - curMatr[arr[k].index][maxEl.elIndex];
+    curDemanda[maxEl.elIndex] =
+      curDemanda[maxEl.elIndex] - curMatr[arr[k].index][maxEl.elIndex];
+    curOferta[arr[k].index] =
+      curOferta[arr[k].index] - curMatr[arr[k].index][maxEl.elIndex];
   } else {
     let arr = tariffs[maxEl.elIndex];
     arr = arr
@@ -100,57 +104,57 @@ function fillBasicPlan(
 
     let k = 0;
 
-    while (curNeeds[arr[k].index] <= 0) {
+    while (curDemanda[arr[k].index] <= 0) {
       k++;
     }
 
     curMatr[maxEl.elIndex][arr[k].index] = Math.min(
-      curNeeds[arr[k].index],
-      curStorage[maxEl.elIndex]
+      curDemanda[arr[k].index],
+      curOferta[maxEl.elIndex]
     );
-    curNeeds[arr[k].index] =
-      curNeeds[arr[k].index] - curMatr[maxEl.elIndex][arr[k].index];
-    curStorage[maxEl.elIndex] =
-      curStorage[maxEl.elIndex] - curMatr[maxEl.elIndex][arr[k].index];
+    curDemanda[arr[k].index] =
+      curDemanda[arr[k].index] - curMatr[maxEl.elIndex][arr[k].index];
+    curOferta[maxEl.elIndex] =
+      curOferta[maxEl.elIndex] - curMatr[maxEl.elIndex][arr[k].index];
   }
 
-  curColsDiffs.forEach((el, index) => {
-    curColsDiffs[index] = getDiffMinEls(
+  curColsDiferencias.forEach((el, index) => {
+    curColsDiferencias[index] = getDiferenciaMinEls(
       getColumnArray(tariffs, index).filter((el, ind) => {
-        return curStorage[ind] > 0;
+        return curOferta[ind] > 0;
       })
     );
-    if (curNeeds[index] === 0) {
-      curColsDiffs[index] = null;
+    if (curDemanda[index] === 0) {
+      curColsDiferencias[index] = null;
     }
   });
 
-  curRowsDiffs.forEach((el, index) => {
-    curRowsDiffs[index] = getDiffMinEls(
+  curRowsDiferencias.forEach((el, index) => {
+    curRowsDiferencias[index] = getDiferenciaMinEls(
       tariffs[index].filter((el, ind) => {
-        return curNeeds[ind] > 0;
+        return curDemanda[ind] > 0;
       })
     );
-    if (curStorage[index] === 0) {
-      curRowsDiffs[index] = null;
+    if (curOferta[index] === 0) {
+      curRowsDiferencias[index] = null;
     }
   });
 
-  const mEl = findMaxDiff(curRowsDiffs, curColsDiffs);
+  const mEl = encontrarMaxDiferencia(curRowsDiferencias, curColsDiferencias);
 
   return {
     matr: curMatr,
     maxEl: mEl,
-    colsDiffs: curColsDiffs,
-    rowsDiffs: curRowsDiffs,
-    curStorVolume: sumArray(curStorage),
-    curNeedVolume: sumArray(curNeeds),
-    needs: curNeeds,
-    storage: curStorage
+    colsDiferencias: curColsDiferencias,
+    rowsDiferencias: curRowsDiferencias,
+    curOfertaVolume: sumarArray(curOferta),
+    curDemandaVolume: sumarArray(curDemanda),
+    demanda: curDemanda,
+    oferta: curOferta
   };
 }
 
-function findMaxDiff(rowsArr, colsArr) {
+function encontrarMaxDiferencia(rowsArr, colsArr) {
   const rowsMax = Math.max(...rowsArr);
   const colsMax = Math.max(...colsArr);
 
@@ -166,53 +170,53 @@ function findMaxDiff(rowsArr, colsArr) {
 }
 
 //búsqueda de diferencias
-function findMatrixDiffs(matrix) {
-  let colsDiffs = matrix[0].map((el, index) =>
-    getDiffMinEls(getColumnArray(matrix, index))
+function encontrarMatrizDiferencias(matriz) {
+  let colsDiferencias = matriz[0].map((el, index) =>
+    getDiferenciaMinEls(getColumnArray(matriz, index))
   );
-  let rowsDiffs = matrix.map((el, index) => getDiffMinEls(el));
+  let rowsDiferencias = matriz.map((el, index) => getDiferenciaMinEls(el));
 
   return {
-    colsDiffs: colsDiffs,
-    rowsDiffs: rowsDiffs
+    colsDiferencias: colsDiferencias,
+    rowsDiferencias: rowsDiferencias
   };
 }
 
 //Esta funcion solo es utilizada en los metodos anteriores
 //devuelve la diferencia entre los dos elementos mínimos del conjunto.
 // devuelve la diferencia de los dos elementos mínimos de la matriz.
-function getDiffMinEls(arr) {
+function getDiferenciaMinEls(arr) {
   let array = [...arr].sort((a, b) => a - b);
   return array.length > 1 ? array[1] - array[0] : 0;
 }
 
 //para crear una serie de columnas.
 //crear una matriz a partir de una columna.
-function getColumnArray(matrix, j) {
+function getColumnArray(matriz, j) {
   let arr = [];
-  matrix.forEach(element => {
+  matriz.forEach(element => {
     arr.push(element[j]);
   });
   return arr;
 }
 
-function getClosedMatrix(matrix, storageVolume, needsVolume) {
-  let currentMatrix = Array.from(matrix);
+function getClosedMatriz(matriz, ofertaVolume, demandaVolume) {
+  let matriz_actual = Array.from(matriz);
 
-  if (storageVolume > needsVolume) {
-    currentMatrix = currentMatrix.map(arr => {
+  if (ofertaVolume > demandaVolume) {
+    matriz_actual = matriz_actual.map(arr => {
       return [...arr, 0];
     });
-  } else if (storageVolume < needsVolume) {
-    currentMatrix[matrix.length] = [...Array(currentMatrix[0].length)].map(
+  } else if (ofertaVolume < demandaVolume) {
+    matriz_actual[matriz.length] = [...Array(matriz_actual[0].length)].map(
       () => 0
     );
   }
-  return currentMatrix;
+  return matriz_actual;
 }
 
-const sumArray = arr => {
+const sumarArray = arr => {
   return arr.reduce((prev, next) => prev + next);
 };
 
-export default solveMatrix;
+export default solveMatriz;

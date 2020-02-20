@@ -3,11 +3,11 @@ import "../styles/outTable.css";
 
 const OutTable = props => {
   const {
-    matrix,
-    storage,
-    needs,
-    colsDiffs = [],
-    rowsDiffs = [],
+    matriz,
+    oferta,
+    demanda,
+    colsDiferencias = [],
+    rowsDiferencias = [],
     plan = [],
     maxEl
   } = props;
@@ -19,47 +19,47 @@ const OutTable = props => {
           <td className="text" rowSpan="2">
             Origenes
           </td>
-          <td className="text" colSpan={matrix[0].length}>
+          <td className="text" colSpan={matriz[0].length}>
             Destinos
           </td>
           <td className="text" rowSpan="2">
             Oferta
           </td>
-          {colsDiffs.length > 0 && rowsDiffs.length > 0 ? (
+          {colsDiferencias.length > 0 && rowsDiferencias.length > 0 ? (
             <td className="text" rowSpan="2">
               (Penalización F.)
             </td>
           ) : null}
         </tr>
         <tr>
-          {matrix[0].map((item, index) => (
+          {matriz[0].map((item, index) => (
             <td key={index}>
               <i>D</i>
               <sub>{index + 1}</sub>
             </td>
           ))}
         </tr>
-        {matrix.map((item, index) => (
+        {matriz.map((item, index) => (
           <tr>
             <td key={index}>
               <i>O</i>
               <sub>{index + 1}</sub>
             </td>
-            {matrix[index].map((item, j) => (
+            {matriz[index].map((item, j) => (
               <td
                 className={
-                  needs[j] === 0 || storage[index] === 0 ? "disabled" : null
+                  demanda[j] === 0 || oferta[index] === 0 ? "disabled" : null
                 }
-                data-price={matrix[index][j]}
+                datos-price={matriz[index][j]}
                 key={`${index}:${j}`}
               >
                 <i>{plan.length > 0 ? plan[index][j] : null}</i>
               </td>
             ))}
             <td>
-              <i>{storage[index]}</i>
+              <i>{oferta[index]}</i>
             </td>
-            {colsDiffs.length > 0 && rowsDiffs.length > 0 ? (
+            {colsDiferencias.length > 0 && rowsDiferencias.length > 0 ? (
               <td
                 className={
                   maxEl.arrName === "rowsArr" && maxEl.elIndex === index
@@ -67,23 +67,23 @@ const OutTable = props => {
                     : null
                 }
               >
-                {rowsDiffs[index]}
+                {rowsDiferencias[index]}
               </td>
             ) : null}
           </tr>
         ))}
         <tr>
           <td>Demanda</td>
-          {matrix[0].map((el, i) => (
+          {matriz[0].map((el, i) => (
             <td>
-              <i>{needs[i]}</i>
+              <i>{demanda[i]}</i>
             </td>
           ))}
         </tr>
-        {colsDiffs.length > 0 && rowsDiffs.length > 0 ? (
+        {colsDiferencias.length > 0 && rowsDiferencias.length > 0 ? (
           <tr>
             <td>(Penalización C.)</td>
-            {matrix[0].map((el, index) => (
+            {matriz[0].map((el, index) => (
               <td
                 className={
                   maxEl.arrName === "colsArr" && maxEl.elIndex === index
@@ -91,7 +91,7 @@ const OutTable = props => {
                     : null
                 }
               >
-                {colsDiffs[index]}
+                {colsDiferencias[index]}
               </td>
             ))}
           </tr>

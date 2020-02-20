@@ -1,38 +1,38 @@
 import c from "../constants.js";
 
-export const changeRowsCount = rowsCount => ({
+export const changeRowsCount = cantidad_origenes => ({
   type: c.CHANGE_ROWS_COUNT,
-  rowsCount
+  cantidad_origenes
 });
 
-export const changeColumnsCount = columnsCount => ({
+export const changeColumnsCount = cantidad_destinos => ({
   type: c.CHANGE_COLUMNS_COUNT,
-  columnsCount
+  cantidad_destinos
 });
 
-export const updateMatrix = data => ({
+export const updateMatriz = datos => ({
   type: c.UPDATE_MATRIX,
-  data
+  datos
 });
 
-export const changeNeeds = needs => ({
+export const changeDemanda = demanda => ({
   type: c.CHANGE_NEEDS,
-  needs
+  demanda
 });
 
-export const changeStorage = storage => ({
+export const changeOferta = oferta => ({
   type: c.CHANGE_STORAGE,
-  storage
+  oferta
 });
 
-export const updateStorageVolume = storageVolume => ({
+export const updateOfertaVolume = ofertaVolume => ({
   type: c.GET_STORAGE_VOLUME,
-  storageVolume
+  ofertaVolume
 });
 
-export const updateNeedsVolume = needsVolume => ({
+export const updateDemandaVolume = demandaVolume => ({
   type: c.GET_NEEDS_VOLUME,
-  needsVolume
+  demandaVolume
 });
 
 export const updateState = newState => ({

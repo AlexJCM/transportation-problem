@@ -4,12 +4,12 @@ import Main from "./components/main";
 import Solve from "./components/solve";
 import "./styles/App.css";
 import { updateState } from "./actions/actionCreator";
-import solveMatrix from "./utils/utils";
+import solveMatriz from "./utils/utils";
 
 class App extends Component {
   render() {
-    const { matrix, storage, needs, updateState } = this.props;
-    solveMatrix(matrix, storage, needs, updateState);
+    const { matriz, oferta, demanda, updateState } = this.props;
+    solveMatriz(matriz, oferta, demanda, updateState);
     return (
       <div className="App">
         <h1>Método de Aproximación de Vogel</h1>
@@ -21,10 +21,10 @@ class App extends Component {
 }
 
 export default connect(
-  ({ matrix }) => ({
-    matrix: matrix.data,
-    storage: matrix.storage,
-    needs: matrix.needs
+  ({ matriz }) => ({
+    matriz: matriz.datos,
+    oferta: matriz.oferta,
+    demanda: matriz.demanda
   }),
   { updateState }
 )(App);
