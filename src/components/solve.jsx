@@ -35,12 +35,12 @@ const Solve = props => {
             : storageVolume < needsVolume
             ? "<"
             : "="}{" "}
-          &sum; D<sub>i</sub> - El modelo es{" "}
-          {storageVolume !== needsVolume ? "от" : "за"}крытой
+          &sum; D<sub>i</sub> - El modelo esta{" "}
+          {storageVolume !== needsVolume ? "desequilibrado" : "equilibrado"}
         </p>
       </div>
       <p>
-        Como resultado, obtenemos un modelo cerrado del problema de transporte:{" "}
+        Como resultado, obtenemos un modelo equilibrado del problema de transporte:{" "}
       </p>
       {closedMatrix && (
         <OutTable
