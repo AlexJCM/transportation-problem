@@ -15,28 +15,27 @@ const Solve = props => {
 
   return (
     <section className="solve">
-      <h2>La solución:</h2>
+     <center><h2>SOLUCIÓN</h2></center>
       <p>
-        Primero determinemos si necesitamos entrar en un proveedor o consumidor
-        ficticio:{" "}
-        {storageVolume !== needsVolume ? "(necesita)" : "(no necesita)"}
+        Primero determinamos si necesitamos crear en un origen o un destino ficticio en este caso :{" "}
+        {storageVolume !== needsVolume ? "(SE NECESITA)" : "(NO SE NECESITA)"}
       </p>
       <div className="volume">
         <p>
-          Suministro total: <b>{storageVolume}</b>
+         &sum; Oferta <sub>Total</sub>: <b>{storageVolume}</b>
         </p>
         <p>
-          Necesidades totales: <b>{needsVolume}</b>
+         &sum; Demanda <sub>Total</sub>: <b>{needsVolume}</b>
         </p>
         <p>
-          &sum; Oferta{" "}
+        &sum; Oferta <sub>T</sub>{" "}
           {storageVolume > needsVolume
             ? ">"
             : storageVolume < needsVolume
             ? "<"
             : "="}{" "}
-          &sum; Demanda = El modelo esta{" "}
-          {storageVolume !== needsVolume ? "desequilibrado" : "equilibrado"}
+          &sum; Demanda <sub>T</sub> = El modelo esta{" "}
+          {storageVolume !== needsVolume ? "DESEQUILIBRADO" : "EQUILIBRADO"}
         </p>
       </div>
       <p>
@@ -62,7 +61,7 @@ const Solve = props => {
         />
       ))}
       <h3>
-        El costo de transporte según el plan es igual a:{" "}
+        El costo de transporte es igual a:{" "}
         {solve[solve.length - 1].matr
           ? findPrice(closedMatrix, solve[solve.length - 1].matr)
           : "Ninguna solución"}
