@@ -10,8 +10,8 @@ const InputTable = props => {
     demanda,
     oferta,
     updMatr,
-    changeDemanda,
-    changeOferta
+    cambiarDemanda,
+    cambiarOferta
   } = props;
 
   const cols = [...Array(columnas)];
@@ -55,7 +55,7 @@ const InputTable = props => {
               />
             ))}
             <InputTD
-              handleChange={changeOferta}
+              handleChange={cambiarOferta}
               val={oferta[index]}
               i={index}
               j={100}
@@ -68,7 +68,7 @@ const InputTable = props => {
           <td className="text">Demanda</td>
           {cols.map((item, index) => (
             <InputTD
-              handleChange={changeDemanda}
+              handleChange={cambiarDemanda}
               val={demanda[index]}
               i={100}
               j={index}

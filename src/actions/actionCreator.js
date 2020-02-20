@@ -1,41 +1,42 @@
-import c from "../constants.js";
+import constantes from "../constants.js";
+//Esta clase es implementada en el arhivo components/main.jsx
 
-export const changeRowsCount = cantidad_origenes => ({
-  type: c.CHANGE_ROWS_COUNT,
+export const cambiarCantidadOrigenes = cantidad_origenes => ({
+  type: constantes.CAMBIAR_CANTIDAD_ORIGENES,
   cantidad_origenes
 });
 
-export const changeColumnsCount = cantidad_destinos => ({
-  type: c.CHANGE_COLUMNS_COUNT,
+export const cambiarCantidadDestinos = cantidad_destinos => ({
+  type: constantes.CAMBIAR_CANTIDAD_DESTINOS,
   cantidad_destinos
 });
 
-export const updateMatriz = datos => ({
-  type: c.UPDATE_MATRIX,
+export const actualizarMatriz = datos => ({
+  type: constantes.ACTUALIZAR_MATRIZ,
   datos
 });
 
-export const changeDemanda = demanda => ({
-  type: c.CHANGE_NEEDS,
+export const cambiarDemanda = demanda => ({
+  type: constantes.CAMBIAR_DEMANDAS,
   demanda
 });
 
-export const changeOferta = oferta => ({
-  type: c.CHANGE_STORAGE,
+export const cambiarOferta = oferta => ({
+  type: constantes.CAMBIAR_OFERTAS,
   oferta
 });
 
-export const updateOfertaVolume = ofertaVolume => ({
-  type: c.GET_STORAGE_VOLUME,
+export const actualizarOfertaVolume = ofertaVolume => ({
+  type: constantes.OBTENER_OFERTA_VOLUME,
   ofertaVolume
 });
 
-export const updateDemandaVolume = demandaVolume => ({
-  type: c.GET_NEEDS_VOLUME,
+export const actualizarDemandaVolume = demandaVolume => ({
+  type: constantes.OBTENER_DEMANDA_VOLUME,
   demandaVolume
 });
 
 export const updateState = newState => ({
-  type: c.UPDATE_STATE,
+  type: constantes.UPDATE_STATE,
   newState
 });

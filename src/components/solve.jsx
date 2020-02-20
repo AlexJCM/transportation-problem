@@ -5,8 +5,8 @@ import "../styles/solve.css";
 
 const Solve = props => {
   const {
-    ofertaVolume,
-    demandaVolume,
+    oferta_volume,
+    demanda_volume,
     closedMatriz,
     starter_demanda,
     starter_oferta,
@@ -22,27 +22,29 @@ const Solve = props => {
       <p>
         Primero determinamos si necesitamos crear en un origen o un destino
         ficticio en este caso :{" "}
-        {ofertaVolume !== demandaVolume ? "(SE NECESITA)" : "(NO SE NECESITA)"}
+        {oferta_volume !== demanda_volume
+          ? "(SE NECESITA)"
+          : "(NO SE NECESITA)"}
       </p>
       <center>
         <p>
-          &sum; Oferta <sub>Total</sub>=<b>{ofertaVolume}</b>
+          &sum; Oferta <sub>Total</sub>=<b>{oferta_volume}</b>
         </p>
         <p>
-          &sum; Demanda <sub>Total</sub>=<b>{demandaVolume}</b>
+          &sum; Demanda <sub>Total</sub>=<b>{demanda_volume}</b>
         </p>
       </center>
 
       <center>
         <p>
           &sum; Oferta <sub>T</sub>{" "}
-          {ofertaVolume > demandaVolume
+          {oferta_volume > demanda_volume
             ? ">"
-            : ofertaVolume < demandaVolume
+            : oferta_volume < demanda_volume
             ? "<"
             : "="}{" "}
           &sum; Demanda <sub>T</sub> - El modelo esta{" "}
-          {ofertaVolume !== demandaVolume ? "DESEQUILIBRADO " : "EQUILIBRADO"}
+          {oferta_volume !== demanda_volume ? "DESEQUILIBRADO " : "EQUILIBRADO"}
         </p>
       </center>
 
@@ -93,8 +95,8 @@ function findPrice(tariffs, plan) {
 }
 
 export default connect(state => ({
-  ofertaVolume: state.solve.ofertaVolume,
-  demandaVolume: state.solve.demandaVolume,
+  oferta_volume: state.solve.oferta_volume,
+  demanda_volume: state.solve.demanda_volume,
   closedMatriz: state.solve.closedMatriz,
   starter_demanda: state.solve.starter_demanda,
   starter_oferta: state.solve.starter_oferta,

@@ -1,11 +1,11 @@
-import c from "../constants.js";
+import constantes from "../constants.js";
 
 function getEmptyMatriz(i, j) {
   let matriz = [];
   for (let k = 0; k < i; k++) {
     let cols = new Array(j);
-    for (let c = 0; c < j; c++) {
-      cols[c] = "";
+    for (let constantes = 0; constantes < j; constantes++) {
+      cols[constantes] = "";
     }
     matriz.push(cols);
   }
@@ -25,7 +25,7 @@ const matriz = (
   { type, cantidad_origenes, cantidad_destinos, datos, demanda, oferta }
 ) => {
   switch (type) {
-    case c.CHANGE_ROWS_COUNT:
+    case constantes.CAMBIAR_CANTIDAD_ORIGENES:
       return {
         ...state,
         cantidad_origenes,
@@ -34,7 +34,7 @@ const matriz = (
         oferta: getEmptyArray(cantidad_origenes)
       };
 
-    case c.CHANGE_COLUMNS_COUNT:
+    case constantes.CAMBIAR_CANTIDAD_DESTINOS:
       return {
         ...state,
         cantidad_destinos,
@@ -43,19 +43,19 @@ const matriz = (
         oferta: getEmptyArray(state.cantidad_origenes)
       };
 
-    case c.UPDATE_MATRIX:
+    case constantes.ACTUALIZAR_MATRIZ:
       return {
         ...state,
         datos
       };
 
-    case c.CHANGE_NEEDS:
+    case constantes.CAMBIAR_DEMANDAS:
       return {
         ...state,
         demanda
       };
 
-    case c.CHANGE_STORAGE:
+    case constantes.CAMBIAR_OFERTAS:
       return {
         ...state,
         oferta

@@ -1,18 +1,21 @@
-import c from "../constants";
+import constantes from "../constants";
 
-const solve = (state = {}, { type, ofertaVolume, demandaVolume, newState }) => {
+const solve = (
+  state = {},
+  { type, oferta_volume, demanda_volume, newState }
+) => {
   switch (type) {
-    case c.GET_STORAGE_VOLUME:
+    case constantes.OBTENER_OFERTA_VOLUME:
       return {
         ...state,
-        ofertaVolume
+        oferta_volume
       };
-    case c.GET_NEEDS_VOLUME:
+    case constantes.OBTENER_DEMANDA_VOLUME:
       return {
         ...state,
-        demandaVolume
+        demanda_volume
       };
-    case c.UPDATE_STATE:
+    case constantes.UPDATE_STATE:
       return {
         ...state,
         ...newState

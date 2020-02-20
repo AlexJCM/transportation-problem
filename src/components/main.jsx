@@ -3,11 +3,11 @@ import Select from "./select.jsx";
 import InputTable from "./inputTable";
 import { connect } from "react-redux";
 import {
-  changeRowsCount,
-  changeColumnsCount,
-  updateMatriz,
-  changeDemanda,
-  changeOferta
+  cambiarCantidadOrigenes,
+  cambiarCantidadDestinos,
+  actualizarMatriz,
+  cambiarDemanda,
+  cambiarOferta
 } from "../actions/actionCreator";
 import "../styles/main.css";
 
@@ -20,37 +20,37 @@ const Main = props => {
     oferta
   } = props;
 
-  const changeColumnsCount = colsCount => {
-    const { changeColumnsCount } = props;
-    changeColumnsCount(colsCount);
+  const cambiarCantidadDestinos = colsCount => {
+    const { cambiarCantidadDestinos } = props;
+    cambiarCantidadDestinos(colsCount);
   };
 
-  const changeRowsCount = cantidad_origenes => {
-    const { changeRowsCount } = props;
-    changeRowsCount(cantidad_origenes);
+  const cambiarCantidadOrigenes = cantidad_origenes => {
+    const { cambiarCantidadOrigenes } = props;
+    cambiarCantidadOrigenes(cantidad_origenes);
   };
 
-  const changeDemanda = (i, j, val) => {
-    const { changeDemanda } = props;
+  const cambiarDemanda = (i, j, val) => {
+    const { cambiarDemanda } = props;
     demanda[j] = val;
-    changeDemanda([...demanda]);
+    cambiarDemanda([...demanda]);
   };
 
-  const changeOferta = (i, j, val) => {
-    const { changeOferta } = props;
+  const cambiarOferta = (i, j, val) => {
+    const { cambiarOferta } = props;
     oferta[i] = val;
-    changeOferta([...oferta]);
+    cambiarOferta([...oferta]);
   };
 
   const updMatr = (i, j, val) => {
-    const { updateMatriz } = props;
+    const { actualizarMatriz } = props;
     let m = Array.from(matriz);
     m[i][j] = val;
-    updateMatriz(m);
+    actualizarMatriz(m);
   };
 
   const clearTable = () => {
-    changeRowsCount(cantidad_origenes);
+    cambiarCantidadOrigenes(cantidad_origenes);
   };
 
   const checkData = () => {
@@ -59,7 +59,7 @@ const Main = props => {
       demanda.indexOf("") !== -1 ||
       oferta.indexOf("") !== -1
     ) {
-      alert("Rellene Todos los Campos");
+      alert("Rellene todos los Campos-!");
       return;
     }
   };
@@ -67,12 +67,12 @@ const Main = props => {
   return (
     <div>
       <Select
-        handleChange={changeRowsCount}
+        handleChange={cambiarCantidadOrigenes}
         val={cantidad_origenes}
         text="Número de Origenes:"
       />
       <Select
-        handleChange={changeColumnsCount}
+        handleChange={cambiarCantidadDestinos}
         val={cantidad_destinos}
         text="Número de Destinos:"
       />
@@ -81,8 +81,8 @@ const Main = props => {
         demanda={demanda}
         oferta={oferta}
         updMatr={updMatr}
-        changeDemanda={changeDemanda}
-        changeOferta={changeOferta}
+        cambiarDemanda={cambiarDemanda}
+        cambiarOferta={cambiarOferta}
         filas={cantidad_origenes}
         columnas={cantidad_destinos}
       />
@@ -107,10 +107,10 @@ export default connect(
     oferta: state.matriz.oferta
   }),
   {
-    changeRowsCount,
-    changeColumnsCount,
-    updateMatriz,
-    changeDemanda,
-    changeOferta
+    cambiarCantidadOrigenes,
+    cambiarCantidadDestinos,
+    actualizarMatriz,
+    cambiarDemanda,
+    cambiarOferta
   }
 )(Main);
