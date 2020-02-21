@@ -7,9 +7,9 @@ section.solve {
 section.solve h2 {
   margin: 0;
 }
-/* section.solve h3 {
+p.ppp {
   font-weight: normal;
-} */
+}
 
 .volume {
   display: flex;

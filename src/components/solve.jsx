@@ -45,11 +45,14 @@ const Solve = props => {
             : oferta_volume < demanda_volume
             ? "<"
             : "="}{" "}
-          &sum; Demanda <sub>T</sub> - El modelo esta{" "}
+          &sum; Demanda <sub>T</sub> ; El modelo esta{" "}
           {oferta_volume !== demanda_volume ? (
-            <strong>DESEQUILIBRADO</strong>
+            <strong>
+              Desequilibrado{" "}
+              <p className="ppp">por lo cual procedemos a equilibrarlo.</p>
+            </strong>
           ) : (
-            <strong>EQUILIBRADO</strong>
+            <strong>Equilibrado</strong>
           )}
         </p>
       </center>
