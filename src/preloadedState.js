@@ -1,35 +1,35 @@
 //Para asignar al estado una matriz para que cuando cargue la página sea utilizado
 //Sol. Optima
-// const state = {
-//   matriz: {
-//     cantidad_origenes: 3,
-//     cantidad_destinos: 4,
-//     datos: [
-//       [8, 9, 10, 11],
-//       [10, 15, 7, 6],
-//       [8, 10, 14, 20]
-//     ],
-//     demanda: [250, 450, 250, 600],
-//     oferta: [450, 550, 300]
-//   }
-// };
+const state = {
+  matriz: {
+    cantidad_origenes: 3,
+    cantidad_destinos: 4,
+    datos: [
+      [8, 9, 10, 11],
+      [10, 15, 7, 6],
+      [8, 10, 14, 20]
+    ],
+    demanda: [250, 450, 250, 600],
+    oferta: [450, 550, 300]
+  }
+};
 
 //Sol. Optima
 
 /*Ejercicio 7.2.2*/
-const state = {
-  matriz: {
-    //matrix
-    cantidad_origenes: 2, //rowsCount
-    cantidad_destinos: 3, //columnsCount
-    datos: [
-      [3, 5, 7],
-      [4, 7, 11]
-    ], //data
-    demanda: [20, 25, 35], //needs
-    oferta: [30, 50] //storage
-  }
-};
+// const state = {
+//   matriz: {
+//     //matrix
+//     cantidad_origenes: 2, //rowsCount
+//     cantidad_destinos: 3, //columnsCount
+//     datos: [
+//       [3, 5, 7],
+//       [4, 7, 11]
+//     ], //data
+//     demanda: [20, 25, 35], //needs
+//     oferta: [30, 50] //storage
+//   }
+// };
 
 //Lit. 1-Ejercicio B Sol. Optima
 // const state = {
