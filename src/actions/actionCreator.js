@@ -27,15 +27,15 @@ export const cambiarOferta = oferta => ({
 });
 
 //este aun no lo hemos utilizado
-export const actualizarOfertaVolume = ofertaVolume => ({
+export const actualizarOfertaVolume = oferta_volume => ({
   type: constantes.OBTENER_OFERTA_VOLUME,
-  ofertaVolume
+  oferta_volume
 });
 
 //este aun no lo hemos utilizado
-export const actualizarDemandaVolume = demandaVolume => ({
+export const actualizarDemandaVolume = demanda_volume => ({
   type: constantes.OBTENER_DEMANDA_VOLUME,
-  demandaVolume
+  demanda_volume
 });
 
 export const updateState = newState => ({

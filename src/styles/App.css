@@ -1,9 +1,9 @@
 div.App {
   width: 1140px;
-  margin: 20px auto;
-  border: 1px solid #a3a3a3;
+  margin: 10px auto;
+  /*border: 1px solid #a3a3a3;*/
   box-sizing: border-box;
-  padding: 30px;
+  padding: 20px;
 }
 
 div.App h1 {

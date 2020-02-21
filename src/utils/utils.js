@@ -5,42 +5,42 @@ function solveMatriz(matrizTariffs, oferta, demanda, callback) {
 
   state.solve = [];
 
-  state.ofertaVolume = sumarArray(oferta);
-  state.demandaVolume = sumarArray(demanda);
+  state.oferta_volume = sumarArray(oferta);
+  state.demanda_volume = sumarArray(demanda);
 
-  state.closedMatriz = getClosedMatriz(
+  state.closed_matriz = getClosedMatriz(
     matrizTariffs,
-    state.ofertaVolume,
-    state.demandaVolume
+    state.oferta_volume,
+    state.demanda_volume
   );
 
   let starter_demanda = Array.from(demanda);
-  if (state.ofertaVolume > state.demandaVolume) {
+  if (state.oferta_volume > state.demanda_volume) {
     starter_demanda[starter_demanda.length] =
-      state.ofertaVolume - state.demandaVolume;
+      state.oferta_volume - state.demanda_volume;
   }
   state.starter_demanda = starter_demanda;
 
   let starter_oferta = Array.from(oferta);
-  if (state.ofertaVolume < state.demandaVolume) {
+  if (state.oferta_volume < state.demanda_volume) {
     starter_oferta[starter_oferta.length] =
-      state.demandaVolume - state.ofertaVolume;
+      state.demanda_volume - state.oferta_volume;
   }
   state.starter_oferta = starter_oferta;
 
-  const diferencias = encontrarMatrizDiferencias(state.closedMatriz);
+  const diferencias = encontrarMatrizDiferencias(state.closed_matriz);
   const maxEl = encontrarMaxDiferencia(
     diferencias.rowsDiferencias,
     diferencias.colsDiferencias
   );
-  const matr = state.closedMatriz.map(arr => arr.map(el => ""));
+  const matr = state.closed_matriz.map(arr => arr.map(el => ""));
 
   state.solve[0] = {
     matr,
     maxEl,
     ...diferencias,
-    curOfertaVolume: state.ofertaVolume,
-    curDemandaVolume: state.demandaVolume,
+    curOfertaVolume: state.oferta_volume,
+    curDemandaVolume: state.demanda_volume,
     demanda: starter_demanda,
     oferta: starter_oferta
   };
@@ -51,7 +51,7 @@ function solveMatriz(matrizTariffs, oferta, demanda, callback) {
   ) {
     state.solve = [
       ...state.solve,
-      fillBasicPlan(state.closedMatriz, state.solve[state.solve.length - 1])
+      fillBasicPlan(state.closed_matriz, state.solve[state.solve.length - 1])
     ];
   }
 
@@ -200,14 +200,14 @@ function getColumnArray(matriz, j) {
   return arr;
 }
 
-function getClosedMatriz(matriz, ofertaVolume, demandaVolume) {
+function getClosedMatriz(matriz, oferta_volume, demanda_volume) {
   let matriz_actual = Array.from(matriz);
 
-  if (ofertaVolume > demandaVolume) {
+  if (oferta_volume > demanda_volume) {
     matriz_actual = matriz_actual.map(arr => {
       return [...arr, 0];
     });
-  } else if (ofertaVolume < demandaVolume) {
+  } else if (oferta_volume < demanda_volume) {
     matriz_actual[matriz.length] = [...Array(matriz_actual[0].length)].map(
       () => 0
     );

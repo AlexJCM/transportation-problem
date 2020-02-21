@@ -7,7 +7,7 @@ const Solve = props => {
   const {
     oferta_volume,
     demanda_volume,
-    closedMatriz,
+    closed_matriz,
     starter_demanda,
     starter_oferta,
     solve
@@ -53,9 +53,9 @@ const Solve = props => {
           <p>Modelo Equilibrado</p>
         </b>
       </center>
-      {closedMatriz && (
+      {closed_matriz && (
         <OutTable
-          matriz={closedMatriz}
+          matriz={closed_matriz}
           oferta={starter_oferta}
           demanda={starter_demanda}
         />
@@ -64,7 +64,7 @@ const Solve = props => {
       {solve.map((solve, i) => (
         <OutTable
           key={i}
-          matriz={closedMatriz}
+          matriz={closed_matriz}
           oferta={solve.oferta}
           demanda={solve.demanda}
           colsDiferencias={solve.colsDiferencias}
@@ -84,24 +84,24 @@ const Solve = props => {
         <p>N = Número de Columnas = {starter_demanda.length}</p>
         {starter_oferta.length + starter_demanda.length - 1}
         {starter_oferta.length + starter_demanda.length - 1 ===
-        numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+        numAsignaciones(closed_matriz, solve[solve.length - 1].matr)
           ? " ="
           : starter_oferta.length + starter_demanda.length - 1 <
-            numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+            numAsignaciones(closed_matriz, solve[solve.length - 1].matr)
           ? " <"
           : " >"}{" "}
-        {numAsignaciones(closedMatriz, solve[solve.length - 1].matr)}
+        {numAsignaciones(closed_matriz, solve[solve.length - 1].matr)}
         <br></br>
         La Solucion{" "}
         {starter_oferta.length + starter_demanda.length - 1 ===
-        numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+        numAsignaciones(closed_matriz, solve[solve.length - 1].matr)
           ? "NO ES DEGRADADA"
           : "ES DEGRADADA"}
       </center>
       <h3>
         El costo de transporte es igual a :{" "}
         {solve[solve.length - 1].matr
-          ? findPrice(closedMatriz, solve[solve.length - 1].matr)
+          ? findPrice(closed_matriz, solve[solve.length - 1].matr)
           : "Ninguna solución"}
       </h3>
     </section>
@@ -135,7 +135,7 @@ function numAsignaciones(tariffs, plan) {
 export default connect(state => ({
   oferta_volume: state.solve.oferta_volume,
   demanda_volume: state.solve.demanda_volume,
-  closedMatriz: state.solve.closedMatriz,
+  closed_matriz: state.solve.closed_matriz,
   starter_demanda: state.solve.starter_demanda,
   starter_oferta: state.solve.starter_oferta,
   solve: state.solve.solve
