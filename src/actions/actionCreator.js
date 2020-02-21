@@ -26,11 +26,13 @@ export const cambiarOferta = oferta => ({
   oferta
 });
 
+//este aun no lo hemos utilizado
 export const actualizarOfertaVolume = ofertaVolume => ({
   type: constantes.OBTENER_OFERTA_VOLUME,
   ofertaVolume
 });
 
+//este aun no lo hemos utilizado
 export const actualizarDemandaVolume = demandaVolume => ({
   type: constantes.OBTENER_DEMANDA_VOLUME,
   demandaVolume
