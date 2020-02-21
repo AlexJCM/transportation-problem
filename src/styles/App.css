@@ -10,6 +10,12 @@ div.App h1 {
   text-align: center;
 }
 
+div.App h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /*******/
 .App-logo {
   height: 16vmin;

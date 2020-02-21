@@ -20,11 +20,13 @@ const Solve = props => {
       </center>
 
       <p>
-        Primero determinamos si necesitamos crear en un origen o un destino
-        ficticio en este caso :{" "}
-        {oferta_volume !== demanda_volume
-          ? "(SE NECESITA)"
-          : "(NO SE NECESITA)"}
+        Primero determinamos si necesitamos crear un origen o destino ficticio,
+        en este caso{" "}
+        {oferta_volume !== demanda_volume ? (
+          <strong> SI SE NECESITA</strong>
+        ) : (
+          <strong> NO SE NECESITA</strong>
+        )}
       </p>
       <center>
         <p>
@@ -44,7 +46,11 @@ const Solve = props => {
             ? "<"
             : "="}{" "}
           &sum; Demanda <sub>T</sub> - El modelo esta{" "}
-          {oferta_volume !== demanda_volume ? "DESEQUILIBRADO " : "EQUILIBRADO"}
+          {oferta_volume !== demanda_volume ? (
+            <strong>DESEQUILIBRADO</strong>
+          ) : (
+            <strong>EQUILIBRADO</strong>
+          )}
         </p>
       </center>
 

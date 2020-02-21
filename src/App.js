@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <h1>Método de Aproximación de Vogel</h1>
+        <h2>Método de Aproximación de Vogel</h2>
         <Main />
         <Solve />
       </div>

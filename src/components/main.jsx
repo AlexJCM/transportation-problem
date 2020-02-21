@@ -70,12 +70,12 @@ const Main = props => {
       <Select
         handleChange={cambiarCantidadOrigenes}
         val={cantidad_origenes}
-        text="Número de Origenes:"
+        text="Número de Origenes: "
       />
       <Select
         handleChange={cambiarCantidadDestinos}
         val={cantidad_destinos}
-        text="Número de Destinos:"
+        text="Número de Destinos: "
       />
       <InputTable
         matriz={matriz}
