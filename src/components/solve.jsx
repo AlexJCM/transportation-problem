@@ -72,6 +72,30 @@ const Solve = props => {
           maxEl={solve.maxEl}
         />
       ))}
+      <h3>Solución Degradada :</h3>
+      <p>Para conocer si la solución es degradada:</p>
+      <center>
+        <p>M + N – 1 = Número de Asignaciones Básicas</p>
+      </center>
+      <p>Siendo:</p>
+      <center>
+        <p>M = Número de Filas = {starter_oferta.length}</p>
+        <p>N = Número de Columnas = {starter_demanda.length}</p>
+        {starter_oferta.length + starter_demanda.length - 1}
+        {starter_oferta.length + starter_demanda.length - 1 ===
+        numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+          ? " ="
+          : starter_oferta.length + starter_demanda.length - 1 <
+            numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+          ? " <"
+          : " >"}{" "}
+        {numAsignaciones(closedMatriz, solve[solve.length - 1].matr)}<br></br>
+        La Solucion{" "}
+        {starter_oferta.length + starter_demanda.length - 1 ===
+        numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
+          ? "NO ES DEGRADADA"
+          : "ES DEGRADADA"}
+      </center>
       <h3>
         El costo de transporte es igual a :{" "}
         {solve[solve.length - 1].matr
@@ -92,6 +116,18 @@ function findPrice(tariffs, plan) {
     }
   }
   return price;
+}
+
+function numAsignaciones(tariffs, plan) {
+  let num_asignaciones = 0;
+  for (let i = 0; i < plan.length; i++) {
+    for (let j = 0; j < plan[0].length; j++) {
+      if (plan[i][j] !== "") {
+        num_asignaciones  = num_asignaciones  + 1;
+      }
+    }
+  }
+  return num_asignaciones ;
 }
 
 export default connect(state => ({
