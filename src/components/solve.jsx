@@ -23,9 +23,9 @@ const Solve = props => {
         Primero determinamos si necesitamos crear un origen o destino ficticio,
         en este caso{" "}
         {oferta_volume !== demanda_volume ? (
-          <strong> SI SE NECESITA</strong>
+          <strong> SI SE NECESITA.</strong>
         ) : (
-          <strong> NO SE NECESITA</strong>
+          <strong> NO SE NECESITA.</strong>
         )}
       </p>
       <center>
@@ -48,18 +48,17 @@ const Solve = props => {
           &sum; Demanda <sub>T</sub> ; El modelo esta{" "}
           {oferta_volume !== demanda_volume ? (
             <strong>
-              Desequilibrado{" "}
-              <p className="ppp">por lo cual procedemos a equilibrarlo.</p>
+              desequilibrado por lo cual procedemos a equilibrarlo.
             </strong>
           ) : (
-            <strong>Equilibrado</strong>
+            <strong>equilibrado</strong>
           )}
         </p>
       </center>
 
       <center>
         <b>
-          <p>Modelo Equilibrado</p>
+          <p>Modelo Equilibrado:</p>
         </b>
       </center>
       {closed_matriz && (
@@ -82,7 +81,7 @@ const Solve = props => {
           maxEl={solve.maxEl}
         />
       ))}
-      <h3>Solución Degradada :</h3>
+      <h3>¿El problema presenta una Solución Degradada?</h3>
       <p>Para conocer si la solución es degradada:</p>
       <center>
         <p>M + N – 1 = Número de Asignaciones Básicas</p>
@@ -107,12 +106,12 @@ const Solve = props => {
           ? "NO ES DEGRADADA"
           : "ES DEGRADADA"}
       </center>
-      <h3>
-        El costo de transporte es igual a :{" "}
+      <h4>
+        ∴ El costo de transporte es igual a:{" "}
         {solve[solve.length - 1].matr
           ? findPrice(closed_matriz, solve[solve.length - 1].matr)
           : "Ninguna solución"}
-      </h3>
+      </h4>
     </section>
   );
 };
