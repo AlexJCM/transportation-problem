@@ -93,4 +93,20 @@ const state = {
   }
 };
 */
+
+//Ejercicio 1 de las diapositivas
+// const state = {
+//   matriz: {
+//     cantidad_origenes: 3,
+//     cantidad_destinos: 2,
+//     datos: [
+//       [80, 215],
+//       [100, 108],
+//       [102, 68]
+//     ],
+//     demanda: [2300, 1400],
+//     oferta: [1000, 1500, 1200]
+//   }
+// };
+
 export default state;

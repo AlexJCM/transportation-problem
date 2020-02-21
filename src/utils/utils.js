@@ -30,8 +30,8 @@ function solveMatriz(matrizTariffs, oferta, demanda, callback) {
 
   const diferencias = encontrarMatrizDiferencias(state.closed_matriz);
   const maxEl = encontrarMaxDiferencia(
-    diferencias.rowsDiferencias,
-    diferencias.colsDiferencias
+    diferencias.fils_diferencias,
+    diferencias.cols_diferencias
   );
   const matr = state.closed_matriz.map(arr => arr.map(el => ""));
 
@@ -60,11 +60,11 @@ function solveMatriz(matrizTariffs, oferta, demanda, callback) {
 
 function fillBasicPlan(
   tariffs,
-  { matr, maxEl, colsDiferencias, rowsDiferencias, demanda, oferta }
+  { matr, maxEl, cols_diferencias, fils_diferencias, demanda, oferta }
 ) {
   let curMatr = matr.map(el => Array.from(el));
-  let curColsDiferencias = [...colsDiferencias];
-  let curRowsDiferencias = [...rowsDiferencias];
+  let curColsDiferencias = [...cols_diferencias];
+  let curRowsDiferencias = [...fils_diferencias];
   let curDemanda = [...demanda];
   let curOferta = [...oferta];
 
@@ -145,8 +145,8 @@ function fillBasicPlan(
   return {
     matr: curMatr,
     maxEl: mEl,
-    colsDiferencias: curColsDiferencias,
-    rowsDiferencias: curRowsDiferencias,
+    cols_diferencias: curColsDiferencias,
+    fils_diferencias: curRowsDiferencias,
     curOfertaVolume: sumarArray(curOferta),
     curDemandaVolume: sumarArray(curDemanda),
     demanda: curDemanda,
@@ -171,14 +171,14 @@ function encontrarMaxDiferencia(rowsArr, colsArr) {
 
 //búsqueda de diferencias
 function encontrarMatrizDiferencias(matriz) {
-  let colsDiferencias = matriz[0].map((el, index) =>
+  let cols_diferencias = matriz[0].map((el, index) =>
     getDiferenciaMinEls(getColumnArray(matriz, index))
   );
-  let rowsDiferencias = matriz.map((el, index) => getDiferenciaMinEls(el));
+  let fils_diferencias = matriz.map((el, index) => getDiferenciaMinEls(el));
 
   return {
-    colsDiferencias: colsDiferencias,
-    rowsDiferencias: rowsDiferencias
+    cols_diferencias: cols_diferencias,
+    fils_diferencias: fils_diferencias
   };
 }
 

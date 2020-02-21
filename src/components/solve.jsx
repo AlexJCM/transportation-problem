@@ -75,8 +75,8 @@ const Solve = props => {
           matriz={closed_matriz}
           oferta={solve.oferta}
           demanda={solve.demanda}
-          colsDiferencias={solve.colsDiferencias}
-          rowsDiferencias={solve.rowsDiferencias}
+          cols_diferencias={solve.cols_diferencias}
+          fils_diferencias={solve.fils_diferencias}
           plan={solve.matr}
           maxEl={solve.maxEl}
         />
@@ -107,7 +107,7 @@ const Solve = props => {
           : "ES DEGRADADA"}
       </center>
       <h4>
-        ∴ El costo de transporte es igual a:{" "}
+        ∴ El costo total de transporte es igual a:{" "}
         {solve[solve.length - 1].matr
           ? findPrice(closed_matriz, solve[solve.length - 1].matr)
           : "Ninguna solución"}

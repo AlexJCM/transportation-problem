@@ -85,6 +85,7 @@ const OutTable = props => {
             <td>(Penalización C.)</td>
             {matriz[0].map((el, index) => (
               <td
+                key={index}
                 className={
                   maxEl.arrName === "colsArr" && maxEl.elIndex === index
                     ? "maxDiff"

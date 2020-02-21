@@ -15,7 +15,7 @@ td[datos-price]::after {
   width: 40%;
   bottom: 0;
   right: 0;
-  background-color: rgb(161, 238, 212);
+  background-color: rgb(211, 241, 231);
 }
 td.maxDiff {
   background-color: rgb(241, 112, 112);
