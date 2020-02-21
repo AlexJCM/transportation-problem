@@ -3,7 +3,7 @@ import "../styles/select.css";
 
 let options = [];
 
-for (let i = 1; i <= 20; i++) {
+for (let i = 1; i <= 10; i++) {
   options.push(React.createElement("option", { value: i, key: i }, i));
 }
 

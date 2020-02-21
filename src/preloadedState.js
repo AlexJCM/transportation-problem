@@ -15,33 +15,21 @@
 // };
 
 //Sol. Optima
-const state = {
-  matriz: {
-    cantidad_origenes: 2,
-    cantidad_destinos: 3,
-    datos: [
-      [10, 30, 10],
-      [20, 10, 10]
-    ],
-    demanda: [20, 22, 14],
-    oferta: [26, 30]
-  }
-};
 
 /*Ejercicio 7.2.2*/
-// const state = {
-//   matriz: {
-//     //matrix
-//     cantidad_origenes: 2, //rowsCount
-//     cantidad_destinos: 3, //columnsCount
-//     datos: [
-//       [3, 5, 7],
-//       [4, 7, 11]
-//     ], //data
-//     demanda: [20, 25, 35], //needs
-//     oferta: [30, 50] //storage
-//   }
-// };
+const state = {
+  matriz: {
+    //matrix
+    cantidad_origenes: 2, //rowsCount
+    cantidad_destinos: 3, //columnsCount
+    datos: [
+      [3, 5, 7],
+      [4, 7, 11]
+    ], //data
+    demanda: [20, 25, 35], //needs
+    oferta: [30, 50] //storage
+  }
+};
 
 //Lit. 1-Ejercicio B Sol. Optima
 // const state = {

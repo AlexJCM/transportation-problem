@@ -40,7 +40,7 @@ const InputTable = props => {
           ))}
         </tr>
         {fils.map((row, index) => (
-          <tr>
+          <tr key={index + "i"}>
             <td key={index}>
               <i>O</i>
               <sub>{index + 1}</sub>

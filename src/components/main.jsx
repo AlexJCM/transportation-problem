@@ -2,6 +2,7 @@ import React from "react";
 import Select from "./select.jsx";
 import InputTable from "./inputTable";
 import { connect } from "react-redux";
+import Button from "react-bootstrap/Button";
 import {
   cambiarCantidadOrigenes,
   cambiarCantidadDestinos,
@@ -87,12 +88,18 @@ const Main = props => {
         columnas={cantidad_destinos}
       />
       <div className="btns-block">
-        <button onClick={clearTable} id="resetTable">
+        {/* <button onClick={clearTable} id="resetTable">
           Limpiar Tabla
-        </button>
-        <button onClick={checkData} id="resolveTable">
+        </button> */}
+        <Button variant="info" onClick={clearTable} id="resetTable">
+          Limpiar Tabla
+        </Button>
+        {/* <button onClick={checkData} id="resolveTable">
           Calcular
-        </button>
+        </button> */}
+        <Button variant="info" onClick={checkData} id="resolveTable">
+          Calcular
+        </Button>
       </div>
     </div>
   );

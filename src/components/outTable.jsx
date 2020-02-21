@@ -40,7 +40,7 @@ const OutTable = props => {
           ))}
         </tr>
         {matriz.map((item, index) => (
-          <tr>
+          <tr key={index}>
             <td key={index}>
               <i>O</i>
               <sub>{index + 1}</sub>
@@ -75,7 +75,7 @@ const OutTable = props => {
         <tr>
           <td>Demanda</td>
           {matriz[0].map((el, i) => (
-            <td>
+            <td key={i}>
               <i>{demanda[i]}</i>
             </td>
           ))}

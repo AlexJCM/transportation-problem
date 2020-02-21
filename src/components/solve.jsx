@@ -61,8 +61,9 @@ const Solve = props => {
         />
       )}
       <h3>Solución paso a paso:</h3>
-      {solve.map(solve => (
+      {solve.map((solve, i) => (
         <OutTable
+          key={i}
           matriz={closedMatriz}
           oferta={solve.oferta}
           demanda={solve.demanda}
@@ -89,7 +90,8 @@ const Solve = props => {
             numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
           ? " <"
           : " >"}{" "}
-        {numAsignaciones(closedMatriz, solve[solve.length - 1].matr)}<br></br>
+        {numAsignaciones(closedMatriz, solve[solve.length - 1].matr)}
+        <br></br>
         La Solucion{" "}
         {starter_oferta.length + starter_demanda.length - 1 ===
         numAsignaciones(closedMatriz, solve[solve.length - 1].matr)
@@ -123,11 +125,11 @@ function numAsignaciones(tariffs, plan) {
   for (let i = 0; i < plan.length; i++) {
     for (let j = 0; j < plan[0].length; j++) {
       if (plan[i][j] !== "") {
-        num_asignaciones  = num_asignaciones  + 1;
+        num_asignaciones = num_asignaciones + 1;
       }
     }
   }
-  return num_asignaciones ;
+  return num_asignaciones;
 }
 
 export default connect(state => ({
